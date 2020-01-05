@@ -45,6 +45,9 @@
     <ClInclude Include="dst_10_internal_sort.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="dst_11_12_13.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

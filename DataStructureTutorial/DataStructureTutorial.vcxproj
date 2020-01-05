@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="dst_10_internal_sort.h" />
+    <ClInclude Include="dst_11_12_13.h" />
     <ClInclude Include="dst_1_introduction.h" />
     <ClInclude Include="dst_2_linear_list.h" />
     <ClInclude Include="dst_3_stack_queue.h" />
