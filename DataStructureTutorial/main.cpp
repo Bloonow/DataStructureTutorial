@@ -10,6 +10,7 @@
 #include "dst_8_graph.h"
 #include "dst_9_search.h"
 #include "dst_10_internal_sort.h"
+#include "dst_11_12_13.h"
 
 #include "Experiment/p119_exp3-5.cpp"
 #include "Experiment/p145_exp4-4.cpp"
