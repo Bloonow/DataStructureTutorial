@@ -647,7 +647,7 @@ namespace dst {
 			Ⅰ、由于是无向图，故可以只需考虑 V-U 剩余顶点的集合，对于 V-U 中编号为 j 的顶点，用两个数组
 			closestNode[j]：表示距离 顶点j 的最近顶点编号，lowestWeight[j]：表示 顶点j 所有相邻边的 最小权值
 			故 顶点j 的最小边为 (closestNode[j], j)，对应的权为 lowestWeight[j]
-			Ⅱ、为确顶一个 顶点i 是属于 U 集合 还是 V-U集合，规定：
+			Ⅱ、为确定一个 顶点i 是属于 U 集合 还是 V-U集合，规定：
 			用 lowestWeight[i] = 0 表示 顶点i 属于 生成树顶点集合U，lowestWeight[i] != 0 表示 顶点i 属于 剩余顶点集合V-U
 			Ⅲ、初始时，U 中只有一个顶点 v，对于其他所有顶点 i，这时 (v,i) 就是 顶点i 到 U 的最小边，置 lowestWeight[i] = g.edges[v][i]，closestNode[i] = v
 			扫描剩下的 V-U集合 中的所有顶点，根据最小的 lowestWeight[k] 求出顶点 k，那么 (closestNode[k], k) 即最小边，输出之（访问操作）
@@ -660,32 +660,6 @@ namespace dst {
 			using dst::_8_2::_8_2_1::MatGraph;
 			using dst::_8_2::_8_2_1::INF;
 			using dst::_8_2::_8_2_1::MAXV;
-
-			void Prim_text(MatGraph g, int v) {
-				int lowcost[MAXV];
-				int MIN;
-				int closest[MAXV], i, j, k;
-				for (int i = 0; i < g.n; i++) {
-					lowcost[i] = g.edges[v][i];
-					closest[i] = v;
-				}
-				for (i = 1; i < g.n; i++) {
-					MIN = INF;
-					for (j = 0; j < g.n; j++)
-						if (lowcost[j] != 0 && lowcost[j] < MIN) {
-							MIN = lowcost[j];
-							k = j;
-						}
-					printf(" 边(%d,%d)权为：%d\n", closest[k], k, MIN);
-					lowcost[k] = 0;
-					for (j = 0; j < g.n; j++) {
-						if (lowcost[j] != 0 && g.edges[k][j] < lowcost[j]) {
-							lowcost[j] = g.edges[k][j];
-							closest[j] = k;
-						}
-					}
-				}
-			}
 
 			// 普里姆算法（无向连通图），采用邻接矩阵（由于需要频繁访问权值）
 			// O(n^2)，执行时间与图的边数e无关，适用于 稠密图

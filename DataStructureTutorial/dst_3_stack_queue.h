@@ -658,7 +658,7 @@ namespace dst {
 		namespace _3_2_1 {
 			// 队列抽象数据类型的定义如下
 			/*
-			ADT Stack {
+			ADT Queue {
 				数据对象:
 					D = { ai | 1 <= i <= n, n >= 0, ai为ElemType类型 }    // ElemType 是自定义类型标识符
 				数据关系:

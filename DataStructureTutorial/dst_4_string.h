@@ -560,10 +560,10 @@ namespace dst {
 			using dst::_4_2::_4_2_1::MaxSize;
 
 			// 由模式串来求back[]回退数组
-			// 1. back[0] = -1, next[1] = 0
+			// 1. back[0] = -1, back[1] = 0
 			// 2. 如果 back[j] = k, 表示有 "t0 t1 ... t(k-1)" == "t(j-k) t(j-k+1) ... t(j-1)"
 			// 2.1. 若 tk == tj，即 "t0 t1 ... t(k-1) tk" == "t(j-k) t(j-k+1) ... t(j-1) tj", 显然 back[j + 1] = k + 1
-			// 2.2. 若 tk != tj，说明tj之前不存在长度为back[j] + 1的子串和开头字符起的子串相同，那么是否存在一个短一些的子串
+			// 2.2. 若 tk != tj，说明tj（包含tj）之前不存在长度为back[j] + 1的子串和开头字符起的子串相同，那么是否存在一个短一些的子串
 			// 2.2. 此时令 k = back[k] 回退，下一步将 tj 与 tk 比较，可以此类推直到找到更短的子串
 			// 2.2. 或直接到开头，不存在更短子串（此时，back[j+1] = 0)
 			void getBack(SqString t, int back[]) {
@@ -620,7 +620,7 @@ namespace dst {
 
 		// 4.3.3 改进的KMP算法 O(m + n)
 		// 按 4.3.2 中所得到的 back[] 数组存在缺陷
-		// 当目标串中的字符 si != tj 时，由于 tj == t(back[j]) == tk，si 也一定不等于 tk， 此时将 j 回退为 back[j] = k 也无法匹配
+		// 当目标串中的字符 si != tj 时，如果 tj == t(back[j]) == tk 时，si 也一定不等于 tk， 此时将 j 回退为 back[j] = k 也无法匹配
 		// 用 backval[] 来修正 back[]，在上述情况下（tj == t(back[j]) == tk），直接使 backval[j] = back[back[j]]
 		// 其他情况，与之前一样，backval[0] = -1, backval[j] = back[j]
 		namespace _4_3_3 {
